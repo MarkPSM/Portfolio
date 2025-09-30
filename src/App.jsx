@@ -331,15 +331,29 @@ export default function GameDevPortfolio() {
                 Aberto a novos projetos, colaborações e oportunidades.
               </p>
             </div>
-            <form className="flex gap-2 w-full md:w-auto">
-              <input
-                placeholder="seu@email.com"
-                className="px-4 py-2 rounded-lg border flex-1 dark:bg-gray-900"
-              />
-              <button className="px-4 py-2 rounded-lg bg-pink-600 text-white">
-                Enviar
-              </button>
-            </form>
+            <div className="flex gap-2 w-full md:w-auto">
+              <a href="https://discord.gg/bGrKFmtgCE" target="_blank">
+                <img
+                  src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white"
+                  target="_blank"
+                />
+              </a>
+              <a href="mailto:markins.psm@gmail.com">
+                <img
+                  src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"
+                  target="_blank"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/marcos-paulo-santana-macedo-4825632bb/"
+                target="_blank"
+              >
+                <img
+                  src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white"
+                  target="_blank"
+                />
+              </a>
+            </div>
           </motion.div>
         </section>
       </main>
