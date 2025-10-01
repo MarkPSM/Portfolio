@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
-  Moon,
-  Sun,
+  Download,
   X,
   Github,
   ExternalLink,
@@ -19,6 +18,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import portfolioPDF from "./assets/Portfolio.pdf";
+
 const sampleProjects = [
   {
     id: 1,
@@ -28,6 +29,7 @@ const sampleProjects = [
     tags: ["GameDev", "Unity", "C#"],
     // link: "#",
     repo: "https://github.com/MarkPSM/DeepPression",
+    tech: ["Unity", "C#"],
   },
   {
     id: 2,
@@ -37,6 +39,7 @@ const sampleProjects = [
     tags: ["HTML", "JavaScript"],
     link: "https://markpsm.github.io/AmphibiaWebsite/",
     repo: "https://github.com/MarkPSM/AmphibiaWebsite",
+    tech: ["HTML", "CSS", "JavaScript"],
   },
   {
     id: 3,
@@ -46,6 +49,7 @@ const sampleProjects = [
     tags: ["React", "Tailwind"],
     // link: "#",
     repo: "https://github.com/SICA-OFC/site",
+    tech: ["React", "Tailwind", "Node.js"],
   },
   {
     id: 4,
@@ -55,6 +59,7 @@ const sampleProjects = [
     tags: ["React", "GameDev", "TypeScript"],
     link: "https://amphibia-studio-game.vercel.app/",
     repo: "https://github.com/MarkPSM/AmphibiaStudioGame",
+    tech: ["React", "TypeScript", "Tailwind"],
   },
   {
     id: 5,
@@ -63,6 +68,7 @@ const sampleProjects = [
     tags: ["React", "Tailwind"],
     link: "#",
     repo: "#",
+    tech: ["React", "Tailwind"],
   },
   {
     id: 6,
@@ -72,6 +78,7 @@ const sampleProjects = [
     tags: ["GameDev", "Unity", "AR"],
     // link: "#",
     repo: "https://github.com/MarkPSM/3DCharAR",
+    tech: ["Unity", "C#"],
   },
 ];
 
@@ -89,11 +96,6 @@ export default function GameDevPortfolio() {
   const [selected, setSelected] = useState(null);
   const [dark, setDark] = useState(false);
   const [projects, setProjects] = useState(sampleProjects);
-
-  useEffect(() => {
-    if (dark) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }, [dark]);
 
   const tags = [
     "All",
@@ -116,7 +118,7 @@ export default function GameDevPortfolio() {
           animate={{ opacity: 1, x: 0 }}
         >
           <h1 className="text-2xl font-bold flex items-center gap-2">
-            <Gamepad2 className="text-pink-500" /> Marcos Paulo — Dev de Jogos,
+            <Gamepad2 className="text-green-500" /> Marcos Paulo — Dev de Jogos,
             Sites e aplicativos
           </h1>
           <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -133,13 +135,6 @@ export default function GameDevPortfolio() {
               placeholder="Buscar projetos..."
             />
           </div>
-          <button
-            onClick={() => setDark((d) => !d)}
-            aria-label="Alternar tema"
-            className="p-2 rounded-lg border dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-          >
-            {dark ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
         </div>
       </header>
 
@@ -160,16 +155,11 @@ export default function GameDevPortfolio() {
             </p>
             <div className="mt-4 flex gap-3">
               <a
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border dark:border-gray-700"
-                href="#"
-              >
-                Contato
-              </a>
-              <a
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-900 text-white"
-                href="#"
+                href={portfolioPDF}
+                download
               >
-                Baixar CV
+                Baixar CV <Download size={16} />
               </a>
             </div>
           </motion.div>
@@ -191,7 +181,7 @@ export default function GameDevPortfolio() {
                   <XAxis type="number" hide />
                   <YAxis dataKey="name" type="category" width={100} />
                   <Tooltip />
-                  <Bar dataKey="value" barSize={12} radius={6} fill="#ec4899" />
+                  <Bar dataKey="value" barSize={12} radius={6} fill="#31C521" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -244,7 +234,7 @@ export default function GameDevPortfolio() {
                     onClick={() => setActiveTag(t)}
                     className={`px-3 py-1 rounded-full text-sm border ${
                       activeTag === t
-                        ? "bg-pink-600 text-white"
+                        ? "bg-green-600 text-white"
                         : "bg-transparent"
                     }`}
                   >
@@ -284,12 +274,6 @@ export default function GameDevPortfolio() {
                         </div>
                       </div>
                       <div className="flex gap-2 items-center">
-                        <button
-                          onClick={() => setSelected(p)}
-                          className="p-2 rounded-md border"
-                        >
-                          Ver
-                        </button>
                         <a
                           href={p.repo}
                           aria-label="Repo"
@@ -389,27 +373,6 @@ export default function GameDevPortfolio() {
                   <X />
                 </button>
               </div>
-              <div className="mt-4">
-                <h4 className="font-medium">Detalhes</h4>
-                <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
-                  Mostre aqui gameplay, GIFs de protótipos, vídeos de sites
-                  animados ou até builds jogáveis.
-                </p>
-                <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="p-4 rounded-lg border dark:border-gray-700"
-                  >
-                    Galeria / Screenshots
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="p-4 rounded-lg border dark:border-gray-700"
-                  >
-                    Tecnologias e Insights
-                  </motion.div>
-                </div>
-              </div>
               <div className="mt-6 flex justify-end gap-2">
                 <a
                   href={selected.repo}
@@ -419,7 +382,7 @@ export default function GameDevPortfolio() {
                 </a>
                 <a
                   href={selected.link}
-                  className="px-4 py-2 rounded-lg bg-pink-600 text-white inline-flex items-center gap-2"
+                  className="px-4 py-2 rounded-lg bg-green-600 text-white inline-flex items-center gap-2"
                 >
                   Ver ao vivo <ExternalLink size={14} />
                 </a>
