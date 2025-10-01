@@ -66,8 +66,8 @@ const sampleProjects = [
     title: "Portfolio Pessoal",
     description: "Meu portfolio pessoal, feito com React e TailwindCSS.",
     tags: ["React", "Tailwind"],
-    link: "#",
-    repo: "#",
+    link: "https://portfolio-eight-woad-63.vercel.app/",
+    repo: "#https://github.com/MarkPSM/Portfolio",
     tech: ["React", "Tailwind"],
   },
   {
